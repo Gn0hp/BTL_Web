@@ -1,0 +1,27 @@
+@SpringBootApplication: init app
+
+@Autowired: tự inject object vào, no need call new Object();
+
+@GetMapping(value <option>  =""): route: get route đi vào đây
+@PostMapping(value="", consumes = MediaType.APPLICATION_JSON_VALUE,): route, sử dụng dạng json
+
+@Controller: tag đánh dấu là 1 bean controller(gửi req về đay)
+
+@RestController: đánh dấu là 1 rest api
+@CrossOrigin(origins = "*"): cho phép gọi api từ máy chủ khác local
+
+@RequestMapping(value=""): group router
+
+@Service: tầng chọc vào db
+
+
+
+---------------------- FLOW----------------------
+
+- sign up/login client
+- CRUD admin hân quyền admin => làm luôn trên url, Ex: domain/admin-pass123/addHotel 
+	(ảnh hưởng trực tiếp đến số lượng phòng)
+- CRUD client: lưu thông tin phòng vào khách (sesion/cookie <- lưu id-value vào session id)  --->> có hủy phòng
+		(không ảnh hưởng, chỉ thêm thông tin vào cho khách)
+- tìm phòng 
+- lịch sử khách hàng
