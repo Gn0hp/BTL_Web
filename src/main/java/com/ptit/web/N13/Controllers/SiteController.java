@@ -12,4 +12,5 @@ public class SiteController {
 	public String home() {
 		return "index";
 	}
+
 }
