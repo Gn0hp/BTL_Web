@@ -1,10 +1,33 @@
 package com.ptit.web.N13.Models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Data
+@Table(name = "tblhotel")
+@Entity
 public class Hotel {
+	@Id
+	@Column(name="Id", nullable = false )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
+	
+	@Column(name="Name")
 	private String name;
+	
+	@Column(name="PhoneNumber")
 	private String phoneNumber;
+	
+	@Column(name="EmailAddress")
 	private String emailAddress;
+	
+	@Column(name="Description")
 	private String description;
 	public Hotel(int iD, String name, String phoneNumber, String emailAddress, String description) {
 		super();
