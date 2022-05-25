@@ -1,8 +1,8 @@
 CREATE TABLE tblBill (
-  Id           int(10) NOT NULL, 
+  Id           int(10) NOT NULL AUTO_INCREMENT, 
   PaymentDate  date NOT NULL, 
   Amount       float NOT NULL, 
-  PaymentType  int(10) NOT NULL, 
+  PaymentType  varchar(255) NOT NULL, 
   Note         varchar(255), 
   tblBookingId int(10) NOT NULL, 
   PRIMARY KEY (Id));
@@ -16,28 +16,29 @@ CREATE TABLE tblBookedRoom (
   tblBookingId  int(10) NOT NULL, 
   PRIMARY KEY (ID));
 CREATE TABLE tblBooking (
-  Id          int(10) NOT NULL, 
+  Id          int(10) NOT NULL AUTO_INCREMENT, 
   BookingDate date NOT NULL, 
   Note        varchar(255), 
   tblClientId int(10) NOT NULL, 
   PRIMARY KEY (Id));
 CREATE TABLE tblClient (
-  Id          int(10) NOT NULL, 
+  Id          int(10) NOT NULL AUTO_INCREMENT, 
   Name        varchar(255) NOT NULL, 
   Email       varchar(255) NOT NULL, 
   PhoneNumber varchar(255) NOT NULL, 
   Username    varchar(255) NOT NULL, 
   Password    varchar(255) NOT NULL, 
+  Role        int(10) NOT NULL,
   PRIMARY KEY (Id));
 CREATE TABLE tblHotel (
-  Id           int(11) NOT NULL, 
+  Id           int(11) NOT NULL AUTO_INCREMENT, 
   Name         varchar(255) NOT NULL, 
-  PhoneNumber  varchar(10) NOT NULL, 
+  PhoneNumber  varchar(255) NOT NULL, 
   EmailAddress varchar(100) NOT NULL, 
   Description  varchar(255) NOT NULL, 
   PRIMARY KEY (Id));
 CREATE TABLE tblRoom (
-  Id          int(10) NOT NULL, 
+  Id          int(10) NOT NULL AUTO_INCREMENT, 
   Name        varchar(255) NOT NULL, 
   Type        varchar(255) NOT NULL, 
   Price       float NOT NULL, 

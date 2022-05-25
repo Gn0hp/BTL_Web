@@ -2,10 +2,35 @@ package com.ptit.web.N13.Models;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+
+@Data
+@Table(name = "tblbooking")
+@Entity
 public class Booking {
+	@Id
+	@Column(name="Id", nullable = false )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
+	
+	@Column(name="BookingDate" )
 	private Date bookingDate;
+	
+	@Column(name="Note")
 	private  String note;
+	
+	@ManyToOne
+	@JoinColumn(name = "tblClientId")
 	private Client client;
 	public Booking() {}
 	public Booking(int iD, Date bookingDate, String note, Client client) {
