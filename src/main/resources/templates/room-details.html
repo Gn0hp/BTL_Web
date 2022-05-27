@@ -13,7 +13,7 @@
     <!--====== HEADER ======-->
     <!--====== OFF CANVAS  ======-->
     <!--====== BREADCRUMB PART START ======-->
-    <section class="breadcrumb-area" style="background-image: url(/img/bg/04.jpg);">
+    <section class="breadcrumb-area" th:style="'background-image: url(' + @{${room.Image}}+');'">
         <div class="container">
             <div class="breadcrumb-text">
                 <span>The ultimate luxury</span>
@@ -40,7 +40,8 @@
                                 <h2>Luxury Double Bed</h2>
                             </div>
                             <div class="price">
-                                $345<span>/Night</span>
+                            	<span style ="font-size: 32px;" th:text="${room.Price}+'$'"></span>
+                                <span>/Night</span>
                             </div>
                         </div>
                         <div class="thumb">
