@@ -48,12 +48,9 @@ public class Client {
 	public Client() {
 		super();
 	}
-	public Client(String name, String email, String phoneNumber, String username, String password) {
+	public Client(String email,String password) {
 		super();
-		this.name = name;
 		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.username = username;
 		this.password = password;
 	}
 	public int getID() {

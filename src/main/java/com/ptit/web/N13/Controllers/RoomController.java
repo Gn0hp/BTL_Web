@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ptit.web.N13.Models.Room;
 import com.ptit.web.N13.Service.RoomService;
@@ -29,10 +31,17 @@ public class RoomController {
 	}
 	@GetMapping("/room-list")
 	public String roomList() {
+		List<Room> rooms = roomService.findByType("Luxury");
+		System.out.println("length of room: "+ rooms.size());
 		return "room-list";
 	}
-	@GetMapping("/room-details")
-	public String roomDetail() {
-		return "room-details";
+	@GetMapping("/room-detail/{id}")
+	public ModelAndView roomDetails(@PathVariable int id) {
+		ModelAndView mav = new ModelAndView("room-details");
+		Room room = roomService.findById(id);
+		mav.addObject("room", room);
+		System.out.print(room.getName());
+		return mav;
 	}
+	
 }

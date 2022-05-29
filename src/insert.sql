@@ -3,7 +3,7 @@ INSERT INTO `web_btl`.`tblClient` (`Name`, `Email`, `PhoneNumber`, `Username`, `
 		VALUES('phong', 'phong@gmail.com', '012423421', 'phong', 'phong', 0);
 INSERT INTO `web_btl`.`tblClient` (`Name`, `Email`, `PhoneNumber`, `Username`, `Password`, `Role`)
 		VALUES('tu', 'tu@gmail.com', '098423843', 'tu', 'tu', 0);
-INSERT INTO `web_btl`.`tblClient` (`Name`, `Email`, `PhoneNumber`, `web_btlUsername`, `Password`, `Role`)
+INSERT INTO `web_btl`.`tblClient` (`Name`, `Email`, `PhoneNumber`, `Username`, `Password`, `Role`)
 		VALUES('nguyen', 'nguyen@gmail.com', '093424853', 'nguyen', 'nguyen', 0);
 INSERT INTO `web_btl`.`tblClient` (`Name`, `Email`, `PhoneNumber`, `Username`, `Password`, `Role`)
 		VALUES('ClientA', 'ClientA@gmail.com', '052843928', 'ClientA', 'ClientA', 1);
