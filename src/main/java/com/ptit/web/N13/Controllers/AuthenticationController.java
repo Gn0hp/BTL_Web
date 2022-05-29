@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ptit.web.N13.Models.Client;
 import com.ptit.web.N13.Service.ClientService;
@@ -25,12 +26,16 @@ public class AuthenticationController {
 		return "signup";
 	}
 	@PostMapping("/login")
-	public String clientLogin(@RequestParam("username") String username ,@RequestParam("password") String password ) {
+	public ModelAndView clientLogin(@RequestParam("username") String username ,@RequestParam("password") String password ) {
 		System.out.println(username);
 		System.out.println(password);
-		if(clientService.clientCheckin(new Client(username, password)))
-			return "index";
-		return "login";
+		
+		if(clientService.clientCheckin(new Client(username, password))) {
+			ModelAndView mav = new ModelAndView("index");
+			mav.addObject("isAuthenticated", true);
+			return mav;
+		}
+		return new ModelAndView("login");
        
 	}
 }
