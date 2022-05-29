@@ -31,6 +31,8 @@ public class RoomController {
 	}
 	@GetMapping("/room-list")
 	public String roomList() {
+		List<Room> rooms = roomService.findByType("Luxury");
+		System.out.println("length of room: "+ rooms.size());
 		return "room-list";
 	}
 	@GetMapping("/room-detail/{id}")

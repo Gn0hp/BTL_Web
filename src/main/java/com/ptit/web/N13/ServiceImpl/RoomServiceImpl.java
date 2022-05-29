@@ -38,4 +38,9 @@ public class RoomServiceImpl implements RoomService{
 		return roomRepo.findById(id).orElse(null);
 	}
 
+	@Override
+	public List<Room> findByType(String type) {
+		return roomRepo.findByType(type);
+	}
+
 }
