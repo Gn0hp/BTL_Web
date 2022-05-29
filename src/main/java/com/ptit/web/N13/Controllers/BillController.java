@@ -15,6 +15,7 @@ import com.ptit.web.N13.Models.*;
 public class BillController {
     @Autowired
 	private BillService billService;
+    private BookingService bookingService;
 
     @GetMapping("/")
 	public String login() {
@@ -25,10 +26,10 @@ public class BillController {
 	public String clientBill(@RequestParam("payment-date") String paymentDate) {
         Integer client_id = 5;
 		System.out.println(paymentDate);
-        List<Booking> booking = billService.findBytblClientId(Integer.toString(client_id));
+        List<Booking> booking = bookingService.findBytblClientId(client_id);
 		System.out.print(booking.get(0).getBookingDate());
         Integer booking_id = booking.get(0).getID();
-        List<Bill> bill = billService.findBytblBookingId(Integer.toString(booking_id));
+        List<Bill> bill = billService.findBytblBookingId(booking_id);
         System.out.print(bill.get(0).getAmount());
         return "statistic";
        

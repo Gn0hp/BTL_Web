@@ -14,7 +14,6 @@ public interface BillService {
 
 	Bill findById(int id);
 	
-	List<Booking> findBytblClientId(String id);
-    List<Bill> findBytblBookingId(String id);
+    List<Bill> findBytblBookingId(int id);
 }
 

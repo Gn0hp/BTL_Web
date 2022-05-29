@@ -32,13 +32,8 @@ public class BillServiceImpl implements BillService{
 		return billRepo.findById(id).orElse(null);
 	}
 
-	@Override
-	public List<Booking> findBytblClientId(String id) {
-		return billRepo.findBytblClientId(id);
-	}
-
     @Override
-	public List<Bill> findBytblBookingId(String id) {
+	public List<Bill> findBytblBookingId(int id) {
 		return billRepo.findBytblBookingId(id);
 	}
 
