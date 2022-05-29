@@ -22,4 +22,12 @@ public class SiteController {
 	public String news() {
 		return "news";
 	}
+	@GetMapping("/news-details")
+	public String newsDetails() {
+		return "news-details";
+	}
+	@GetMapping("/contact")
+	public String contact() {
+		return "news";
+	}
 }
