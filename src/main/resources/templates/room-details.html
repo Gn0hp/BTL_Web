@@ -224,8 +224,8 @@
                 <!-- form -->
                 <div class="col-lg-4">
                     <div class="room-booking-form">
-                        <h5 class="title">Check Availability</h5>
-                        <form action="/booking/check-detail-availability", method="post">
+                        <h5 class="title">Book Now</h5>
+                        <form action="/booking/book-room", method="post">
                             <div class="input-group input-group-two left-icon mb-20">
                                 <label for="arrival-date">Check In</label>
                                 <div class="icon"><i class="fal fa-calendar-alt"></i></div>
@@ -237,8 +237,8 @@
                                 <input type="text" placeholder="30-6-2020" name="departure-date" id="departure-date">
                             </div>
                             <div class="input-group input-group-two left-icon mb-20">
-                                <label for="room">Rooms</label>
-                                <select name="room" id="room">
+                                <label for="rooms">Rooms</label>
+                                <select name="rooms" id="rooms">
                                     <option value="1">1 Room</option>
                                     <option value="2" selected>2 Room</option>
                                     <option value="4">4 Room</option>
@@ -247,15 +247,13 @@
                             </div>
                             <div class="input-group input-group-two left-icon mb-20">
                                 <label for="departure-date">Guest</label>
-                                <select name="guest" id="guest">
-                                    <option value="8">8 Guest</option>
-                                    <option value="10" selected>10 Guest</option>
-                                    <option value="12">12 Guest</option>
-                                    <option value="15">15 Guest</option>
-                                </select>
+                                <input type="text" name="guest" id="guest">
+                            </div>
+                            <div class="input-group input-group-two left-icon mb-20">
+                                <input type="hidden" name="roomID" id="guest" th:value="${room.ID}">
                             </div>
                             <div class="input-group">
-                                <button class="main-btn btn-filled">check availability</button>
+                                <button class="main-btn btn-filled">Book Now</button>
                             </div>
                         </form>
                     </div>

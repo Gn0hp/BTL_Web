@@ -35,6 +35,9 @@ public class Room {
 	@Column(name="Image")
 	private String image;
 	
+	@Column(name="capable")
+	private int capable;
+	
 	@ManyToOne
 	@JoinColumn(name = "HotelId")
 	private Hotel hotel;
@@ -101,5 +104,11 @@ public class Room {
 	}
 	public Room() {
 		super();
+	}
+	public void setCapable(int capable) {
+		this.capable = capable;
+	}
+	public int getCapable() {
+		return this.capable;
 	}
 }
