@@ -20,8 +20,8 @@
                 <h2 class="page-title">Room Details</h2>
 
                 <ul class="breadcrumb-nav">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Rooms</li>
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/room/room-grid">Rooms</a></li>
                 </ul>
             </div>
         </div>
@@ -225,7 +225,7 @@
                 <div class="col-lg-4">
                     <div class="room-booking-form">
                         <h5 class="title">Check Availability</h5>
-                        <form action="#">
+                        <form action="/booking/check-detail-availability", method="post">
                             <div class="input-group input-group-two left-icon mb-20">
                                 <label for="arrival-date">Check In</label>
                                 <div class="icon"><i class="fal fa-calendar-alt"></i></div>
