@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/layout :: main-fragment(  
+                                                ~{::title},
+                                                ~{:: #main-content},  
+                                               )}">
+
+<head>
+    <!--====== Title ======-->
+    <title> Hotel Miranda Home Page One </title>
+    <!--====== Favicon Icon ======-->
+</head>
+
+<body>
+    <div class="container" id="main-content">
+        <section class="breadcrumb-area" style="background-image: url(/img/bg/04.jpg);">
+            <div class="container">
+                <div class="breadcrumb-text">
+                    <span>The ultimate luxury</span>
+                    <h2 class="page-title">Ultimate Room</h2>
+
+                    <ul class="breadcrumb-nav">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Rooms</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div class="booking-form-inner">
+            <form action="/bill/" method="post">
+                <div class="row align-items-end">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="inputs-filed mt-30">
+                            <label for="arrival-date">Payment Date</label>
+                            <div class="icon"><i class="fal fa-calendar-alt"></i></div>
+                            <input type="text" placeholder="24th march 2020" name="payment-date" id="payment-date">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="inputs-filed mt-30">
+                            <button type="submit">check bill</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

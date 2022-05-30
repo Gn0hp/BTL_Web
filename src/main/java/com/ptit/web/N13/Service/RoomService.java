@@ -17,5 +17,6 @@ public interface RoomService {
 	Room findById(int id);
 	
 	List<Room> findByType(String type);
+	
 }
 

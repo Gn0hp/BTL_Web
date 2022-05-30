@@ -35,7 +35,7 @@ public class AuthenticationController {
 			mav.addObject("isAuthenticated", true);
 			return mav;
 		}
-		return new ModelAndView("login");
+		return new ModelAndView("login");			
        
 	}
 }
