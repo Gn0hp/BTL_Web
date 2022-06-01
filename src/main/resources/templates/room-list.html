@@ -21,12 +21,12 @@
     <section class="breadcrumb-area" style="background-image: url(/img/bg/04.jpg);">
         <div class="container">
             <div class="breadcrumb-text">
-                <span>The ultimate luxury</span>
-                <h2 class="page-title">Ultimate Room</h2>
+                <span>The ultimate room</span>
+                <h2 class="page-title" th:text="${roomType} + ' Rooms'">Ultimate Room</h2>
 
                 <ul class="breadcrumb-nav">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Rooms</li>
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/room/room-grid">Rooms</a></li>
                 </ul>
             </div>
         </div>
@@ -36,11 +36,11 @@
     <section class="room-section room-list-style pt-120 pb-120">
         <div class="container">
             <div class="room-list-loop">
-                <div class="room-box mb-30">
+                <div class="room-box mb-30" th:each="room : ${rooms}">
                     <div class="row no-gutters justify-content-center">
                         <div class="col-lg-5 col-md-10">
                             <div class="room-img-wrap">
-                                <div class="room-img" style="background-image: url(/img/room/list-1.jpg);"></div>
+                                <div class="room-img" th:style="'background-image: url(' + @{${room.Image}} +';)'"></div>
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-10">
@@ -56,207 +56,7 @@
                                             <li><i class="fal fa-compress-arrows-alt"></i></li>
                                             <li><i class="fal fa-swimmer"></i></li>
                                         </ul>
-                                        <h4 class="title"><a href="#">Minimal Duplex Room</a></h4>
-
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat.
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="text-sm-center">
-                                            <span class="price">$345<span>/Night</span> </span>
-                                            <a href="#" class="book-btn">Booking Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="room-box mb-30">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-lg-5 col-md-10">
-                            <div class="room-img-wrap">
-                                <div class="room-img" style="background-image: url(/img/room/list-2.jpg);"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-10">
-                            <div class="room-desc">
-                                <div class="row align-items-center">
-                                    <div class="col-sm-8">
-                                        <ul class="icons">
-                                            <li><i class="fal fa-bed"></i></li>
-                                            <li><i class="fal fa-wifi"></i></li>
-                                            <li><i class="fal fa-car"></i></li>
-                                            <li><i class="fal fa-coffee"></i></li>
-                                            <li><i class="fal fa-concierge-bell"></i></li>
-                                            <li><i class="fal fa-compress-arrows-alt"></i></li>
-                                            <li><i class="fal fa-swimmer"></i></li>
-                                        </ul>
-                                        <h4 class="title"><a href="#">Minimal Duplex Room</a></h4>
-
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat.
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="text-sm-center">
-                                            <span class="price">$345<span>/Night</span> </span>
-                                            <a href="#" class="book-btn">Booking Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="room-box mb-30">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-lg-5 col-md-10">
-                            <div class="room-img-wrap">
-                                <div class="room-img" style="background-image: url(/img/room/list-3.jpg);"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-10">
-                            <div class="room-desc">
-                                <div class="row align-items-center">
-                                    <div class="col-sm-8">
-                                        <ul class="icons">
-                                            <li><i class="fal fa-bed"></i></li>
-                                            <li><i class="fal fa-wifi"></i></li>
-                                            <li><i class="fal fa-car"></i></li>
-                                            <li><i class="fal fa-coffee"></i></li>
-                                            <li><i class="fal fa-concierge-bell"></i></li>
-                                            <li><i class="fal fa-compress-arrows-alt"></i></li>
-                                            <li><i class="fal fa-swimmer"></i></li>
-                                        </ul>
-                                        <h4 class="title"><a href="#">Minimal Duplex Room</a></h4>
-
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat.
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="text-sm-center">
-                                            <span class="price">$345<span>/Night</span> </span>
-                                            <a href="#" class="book-btn">Booking Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="room-box mb-30">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-lg-5 col-md-10">
-                            <div class="room-img-wrap">
-                                <div class="room-img" style="background-image: url(/img/room/list-4.jpg);"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-10">
-                            <div class="room-desc">
-                                <div class="row align-items-center">
-                                    <div class="col-sm-8">
-                                        <ul class="icons">
-                                            <li><i class="fal fa-bed"></i></li>
-                                            <li><i class="fal fa-wifi"></i></li>
-                                            <li><i class="fal fa-car"></i></li>
-                                            <li><i class="fal fa-coffee"></i></li>
-                                            <li><i class="fal fa-concierge-bell"></i></li>
-                                            <li><i class="fal fa-compress-arrows-alt"></i></li>
-                                            <li><i class="fal fa-swimmer"></i></li>
-                                        </ul>
-                                        <h4 class="title"><a href="#">Minimal Duplex Room</a></h4>
-
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat.
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="text-sm-center">
-                                            <span class="price">$345<span>/Night</span> </span>
-                                            <a href="#" class="book-btn">Booking Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="room-box mb-30">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-lg-5 col-md-10">
-                            <div class="room-img-wrap">
-                                <div class="room-img" style="background-image: url(/img/room/list-5.jpg);"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-10">
-                            <div class="room-desc">
-                                <div class="row align-items-center">
-                                    <div class="col-sm-8">
-                                        <ul class="icons">
-                                            <li><i class="fal fa-bed"></i></li>
-                                            <li><i class="fal fa-wifi"></i></li>
-                                            <li><i class="fal fa-car"></i></li>
-                                            <li><i class="fal fa-coffee"></i></li>
-                                            <li><i class="fal fa-concierge-bell"></i></li>
-                                            <li><i class="fal fa-compress-arrows-alt"></i></li>
-                                            <li><i class="fal fa-swimmer"></i></li>
-                                        </ul>
-                                        <h4 class="title"><a href="#">Minimal Duplex Room</a></h4>
-
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat.
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="text-sm-center">
-                                            <span class="price">$345<span>/Night</span> </span>
-                                            <a href="#" class="book-btn">Booking Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="room-box mb-30">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-lg-5 col-md-10">
-                            <div class="room-img-wrap">
-                                <div class="room-img" style="background-image: url(/img/room/list-6.jpg);"></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-10">
-                            <div class="room-desc">
-                                <div class="row align-items-center">
-                                    <div class="col-sm-8">
-                                        <ul class="icons">
-                                            <li><i class="fal fa-bed"></i></li>
-                                            <li><i class="fal fa-wifi"></i></li>
-                                            <li><i class="fal fa-car"></i></li>
-                                            <li><i class="fal fa-coffee"></i></li>
-                                            <li><i class="fal fa-concierge-bell"></i></li>
-                                            <li><i class="fal fa-compress-arrows-alt"></i></li>
-                                            <li><i class="fal fa-swimmer"></i></li>
-                                        </ul>
-                                        <h4 class="title"><a href="#">Minimal Duplex Room</a></h4>
+                                        <h4 class="title"><a th:href="'/room/room-detail/' + @{${room.ID}}">Minimal Duplex Room</a></h4>
 
                                         <p>
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

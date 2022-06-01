@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layouts/layout :: main-fragment(  
                                                 ~{::title},
-                                                ~{:: #main-content},  
+                                                ~{:: #main-content}, 
+                                                ~{:: #login-content}
                                                )}">
 
 <head>
@@ -12,7 +13,24 @@
 </head>
 
 <body>
-	
+	<div class ="item" id="login-content">
+		<span th:unless="${isLogin}"> 
+			<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="/authentication/login/" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Login</a>
+		</span>
+		<span th:if="${isLogin}"> 
+			<h4 class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;" th:text="'Hello '+${USERNAME}">
+				</h4>
+			<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="/authentication/logout/" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Logout</a>
+		</span>
+	</div>
 	<!--====== PReLOader ======-->
 	<!--====== HEADER PART ======-->
 	<!--====== OFF CANVAS  ======-->
@@ -25,21 +43,23 @@
 					<div class="banner-content">
 						<span class="promo-tag wow fadeInDown" data-wow-delay=".3s">The ultimate luxury
 							experience</span>
+							<a href="/room/room-grid">
 						<h1 class="title wow fadeInLeft" data-wow-delay=".5s"> The Perfect <br> Base For You
-						</h1>
+						</h1></a>
 						<ul>
 							<li>
-								<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" href="#">take a
+								<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" href="/room/room-grid">take a
 									tour</a>
 							</li>
 							<li>
-								<a class="main-btn btn-border wow fadeInUp" data-wow-delay=".9s" href="#">Learn
+								<a class="main-btn btn-border wow fadeInUp" data-wow-delay=".9s" href="/news">Learn
 									More</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="0.5s">
+				<a href = "/room/room-detail/1">
 					<div class="banner-thumb d-none d-md-block">
 						<div class="hero-slider-one">
 							<div class="single-thumb">
@@ -50,6 +70,7 @@
 							</div>
 						</div>
 					</div>
+				</a>
 				</div>
 			</div>
 		</div>
@@ -61,7 +82,7 @@
 			<div class="row justify-content-center">
 				<div class="col-xl-10 col-11">
 					<div class="booking-form-inner">
-						<form action="#">
+						<form action="/booking/check-availability" method = "post">
 							<div class="row align-items-end">
 								<div class="col-lg-3 col-md-6">
 									<div class="inputs-filed mt-30">
@@ -82,13 +103,8 @@
 								<div class="col-lg-3 col-md-6">
 									<div class="inputs-filed mt-30">
 										<label for="guests">Guests</label>
-										<select name="guests" id="guests">
-											<option value="" disabled selected>Select From Here</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="4">4</option>
-											<option value="8">8</option>
-										</select>
+										<input type="text" placeholder="Number of guests" name="guests">
+										
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-6">
@@ -144,7 +160,7 @@
 					</a>
 				</li>
 				<li class=" wow fadeInUp" data-wow-delay="1.1s">
-					<a href="#">
+					<a href="/room/room-list/luxury">
 						<i class="flaticon-hotel"></i>
 						<i class="hover-icon flaticon-hotel"></i>
 						<span class="title">luxury room</span>
@@ -202,9 +218,9 @@
 												style="background-image: url(/img/room-type/04.jpg);"></div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>03 Rooms</span>
-												<h3><a href="#">Luxury Hall Of Fame</a></h3>
+												<h3><a href="/room/room-detail/4">Luxury Hall Of Fame</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/4" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-lg-6 col-sm-6">
@@ -214,9 +230,9 @@
 											</div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>05 Rooms</span>
-												<h3><a href="#">Pendora Fame</a></h3>
+												<h3><a href="/room/room-detail/1">Pendora Fame</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/1" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-lg-6 col-sm-6">
@@ -226,9 +242,9 @@
 											</div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>10 Rooms</span>
-												<h3><a href="#">Pacific Room</a></h3>
+												<h3><a href="/room/room-detail/2">Pacific Room</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/2" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -239,9 +255,9 @@
 									</div>
 									<div class="room-content">
 										<span class="room-count"><i class="fal fa-th"></i>12 Rooms</span>
-										<h3><a href="#">Junior Suite</a></h3>
+										<h3><a href="/room/room-detail/3">Junior Suite</a></h3>
 									</div>
-									<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+									<a href="/room/room-detail/3" class="room-link"><i class="fal fa-arrow-right"></i></a>
 								</div>
 							</div>
 						</div>
@@ -256,9 +272,9 @@
 									</div>
 									<div class="room-content">
 										<span class="room-count"><i class="fal fa-th"></i>12 Rooms</span>
-										<h3><a href="#">Junior Suite</a></h3>
+										<h3><a href="/room/room-detail/3">Junior Suite</a></h3>
 									</div>
-									<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+									<a href="/room/room-detail/3" class="room-link"><i class="fal fa-arrow-right"></i></a>
 								</div>
 							</div>
 							<div class="col-lg-8">
@@ -270,9 +286,9 @@
 											</div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>10 Rooms</span>
-												<h3><a href="#">Pacific Room</a></h3>
+												<h3><a href="/room/room-detail/2">Pacific Room</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/2" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-lg-6 col-sm-6">
@@ -282,9 +298,9 @@
 											</div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>05 Rooms</span>
-												<h3><a href="#">Pendora Fame</a></h3>
+												<h3><a href="/room/room-detail/1">Pendora Fame</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/1" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-12">
@@ -293,9 +309,9 @@
 												style="background-image: url(/img/room-type/04.jpg);"></div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>03 Rooms</span>
-												<h3><a href="#">Luxury Hall Of Fame</a></h3>
+												<h3><a href="/room/room-detail/4">Luxury Hall Of Fame</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/4" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -312,9 +328,9 @@
 									</div>
 									<div class="room-content">
 										<span class="room-count"><i class="fal fa-th"></i>12 Rooms</span>
-										<h3><a href="#">Junior Suite</a></h3>
+										<h3><a href="/room/room-detail/3">Junior Suite</a></h3>
 									</div>
-									<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+									<a href="/room/room-detail/3" class="room-link"><i class="fal fa-arrow-right"></i></a>
 								</div>
 							</div>
 							<div class="col-lg-8">
@@ -325,9 +341,9 @@
 												style="background-image: url(/img/room-type/04.jpg);"></div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>03 Rooms</span>
-												<h3><a href="#">Luxury Hall Of Fame</a></h3>
+												<h3><a href="/room/room-detail/4">Luxury Hall Of Fame</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/4" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-lg-6 col-sm-6">
@@ -337,9 +353,9 @@
 											</div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>05 Rooms</span>
-												<h3><a href="#">Pendora Fame</a></h3>
+												<h3><a href="/room/room-detail/5">Pendora Fame</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/5" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-lg-6 col-sm-6">
@@ -349,9 +365,9 @@
 											</div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>10 Rooms</span>
-												<h3><a href="#">Pacific Room</a></h3>
+												<h3><a href="/room/room-detail/2">Pacific Room</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/2" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -371,9 +387,9 @@
 											</div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>05 Rooms</span>
-												<h3><a href="#">Pendora Fame</a></h3>
+												<h3><a href="/room/room-detail/1">Pendora Fame</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/1" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-lg-6 col-sm-6">
@@ -383,9 +399,9 @@
 											</div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>10 Rooms</span>
-												<h3><a href="#">Pacific Room</a></h3>
+												<h3><a href="/room/room-detail/2">Pacific Room</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/2" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 									<div class="col-12">
@@ -394,9 +410,9 @@
 												style="background-image: url(/img/room-type/04.jpg);"></div>
 											<div class="room-content">
 												<span class="room-count"><i class="fal fa-th"></i>03 Rooms</span>
-												<h3><a href="#">Luxury Hall Of Fame</a></h3>
+												<h3><a href="/room/room-detail/4">Luxury Hall Of Fame</a></h3>
 											</div>
-											<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+											<a href="/room/room-detail/4" class="room-link"><i class="fal fa-arrow-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -407,9 +423,9 @@
 									</div>
 									<div class="room-content">
 										<span class="room-count"><i class="fal fa-th"></i>12 Rooms</span>
-										<h3><a href="#">Junior Suite</a></h3>
+										<h3><a href="/room/room-detail/3">Junior Suite</a></h3>
 									</div>
-									<a href="#" class="room-link"><i class="fal fa-arrow-right"></i></a>
+									<a href="/room/room-detail/4" class="room-link"><i class="fal fa-arrow-right"></i></a>
 								</div>
 							</div>
 						</div>
@@ -432,7 +448,7 @@
 							</div>
 							<p>Miranda has everything for your trip
 								& every single things.</p>
-							<a href="#" class="main-btn btn-filled">take a tour</a>
+							<a href="/room/room-grid" class="main-btn btn-filled">take a tour</a>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-10 col-sm-11 col-10 order-1 order-lg-2">
@@ -529,7 +545,7 @@
 									<div class="icon">
 										<i class="flaticon-hotel"></i>
 									</div>
-									<h3><a href="#">Luxury Room</a></h3>
+									<h3><a href="/room/room-list/luxury">Luxury Room</a></h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 										incididunt ut labore et dolore magna.</p>
 								</div>
@@ -537,7 +553,7 @@
 									<div class="icon">
 										<i class="flaticon-hotel"></i>
 									</div>
-									<h3><a href="#">Luxury Room</a></h3>
+									<h3><a href="/room/room-list/superior">Superior Room</a></h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 										incididunt ut labore et dolore magna.</p>
 								</div>
@@ -545,7 +561,7 @@
 									<div class="icon">
 										<i class="flaticon-hotel"></i>
 									</div>
-									<h3><a href="#">Luxury Room</a></h3>
+									<h3><a href="/room/room-list/family">Family Room</a></h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 										incididunt ut labore et dolore magna.</p>
 								</div>
@@ -553,7 +569,7 @@
 									<div class="icon">
 										<i class="flaticon-hotel"></i>
 									</div>
-									<h3><a href="#">Luxury Room</a></h3>
+									<h3><a href="/room/room-list/superior">Superior Room</a></h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 										incididunt ut labore et dolore magna.</p>
 								</div>
@@ -561,7 +577,7 @@
 									<div class="icon">
 										<i class="flaticon-hotel"></i>
 									</div>
-									<h3><a href="#">Luxury Room</a></h3>
+									<h3><a href="/room/room-list/luxury">Luxury Room</a></h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 										incididunt ut labore et dolore magna.</p>
 								</div>
@@ -607,18 +623,18 @@
 		<div class="container">
 			<div class="section-title text-center mb-80">
 				<span class="title-tag">testimonials</span>
-				<h2>Client Feedback</h2>
+				<h2>Website Author</h2>
 			</div>
 			<!-- testimonials loop  -->
 			<div class="row testimonial-slider">
 				<div class="col-lg-4">
 					<div class="testimonial-box">
 						<div class="client-img">
-							<img src="/img/testimonial/01.png" alt="images">
+							<img src="/img/tu.jpg" alt="images">
 							<span class="check"><i class="fal fa-check"></i></span>
 						</div>
-						<h3>Rosalina D. William</h3>
-						<span class="clinet-post">Founder, qux co.</span>
+						<h3>Tu Hoang Cong</h3>
+						<span class="clinet-post">Co-op, Authentication</span>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 							incididunt ut labore et dolore.
@@ -628,11 +644,11 @@
 				<div class="col-lg-4">
 					<div class="testimonial-box">
 						<div class="client-img">
-							<img src="/img/testimonial/02.png" alt="images">
+							<img src="/img/Me.jpg" alt="images">
 							<span class="check"><i class="fal fa-check"></i></span>
 						</div>
-						<h3>Donald H. Hilixer</h3>
-						<span class="clinet-post">Founder, hilix</span>
+						<h3>Phong Tran Khac</h3>
+						<span class="clinet-post">Founder</span>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 							incididunt ut labore et dolore.
@@ -642,11 +658,11 @@
 				<div class="col-lg-4">
 					<div class="testimonial-box">
 						<div class="client-img">
-							<img src="/img/testimonial/03.png" alt="images">
+							<img src="/img/Nguyen.jpg" alt="images">
 							<span class="check"><i class="fal fa-check"></i></span>
 						</div>
-						<h3>Browfish Dumble</h3>
-						<span class="clinet-post">Founder, Condo</span>
+						<h3>Nguyen Luu Trong</h3>
+						<span class="clinet-post">Co-op, Statistic</span>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 							incididunt ut labore et dolore.
@@ -656,11 +672,11 @@
 				<div class="col-lg-4">
 					<div class="testimonial-box">
 						<div class="client-img">
-							<img src="/img/testimonial/02.png" alt="images">
+							<img src="/img/Minh.jpg" alt="images">
 							<span class="check"><i class="fal fa-check"></i></span>
 						</div>
-						<h3>Donald H. Hilixer</h3>
-						<span class="clinet-post">Founder, hilix</span>
+						<h3>Minh Tran Binh</h3>
+						<span class="clinet-post">Co-op, Cre: Front-end</span>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 							incididunt ut labore et dolore.
@@ -723,13 +739,13 @@
 						<div class="post-desc">
 							<ul class="post-meta">
 								<li>
-									<a href="#"><i class="fal fa-calendar-alt"></i>23rd March 2019</a>
+									<a href="/room/room-detail/5"><i class="fal fa-calendar-alt"></i>23rd March 2019</a>
 								</li>
 								<li>
-									<a href="#"><i class="fal fa-user"></i>By Admin</a>
+									<a href="/contact"><i class="fal fa-user"></i>By Admin</a>
 								</li>
 							</ul>
-							<h4><a href="#">Each of our 8 double rooms has its own distinct.</a></h4>
+							<h4><a href="/news">Each of our 8 double rooms has its own distinct.</a></h4>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 								incididunt ut labore et dolore.
@@ -743,13 +759,13 @@
 						<div class="post-desc">
 							<ul class="post-meta">
 								<li>
-									<a href="#"><i class="fal fa-calendar-alt"></i>23rd March 2019</a>
+									<a href="/room/room-detail/4"><i class="fal fa-calendar-alt"></i>23rd March 2019</a>
 								</li>
 								<li>
-									<a href="#"><i class="fal fa-user"></i>By Admin</a>
+									<a href="/contact"><i class="fal fa-user"></i>By Admin</a>
 								</li>
 							</ul>
-							<h4><a href="#">Each of our 8 double rooms has its own distinct.</a></h4>
+							<h4><a href="/news">Each of our 8 double rooms has its own distinct.</a></h4>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 								incididunt ut labore et dolore.
@@ -763,13 +779,13 @@
 						<div class="post-desc">
 							<ul class="post-meta">
 								<li>
-									<a href="#"><i class="fal fa-calendar-alt"></i>23rd March 2019</a>
+									<a href="/room/room-detail/8"><i class="fal fa-calendar-alt"></i>23rd March 2019</a>
 								</li>
 								<li>
-									<a href="#"><i class="fal fa-user"></i>By Admin</a>
+									<a href="/contact"><i class="fal fa-user"></i>By Admin</a>
 								</li>
 							</ul>
-							<h4><a href="#">Each of our 8 double rooms has its own distinct.</a></h4>
+							<h4><a href="/news">Each of our 8 double rooms has its own distinct.</a></h4>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 								incididunt ut labore et dolore.

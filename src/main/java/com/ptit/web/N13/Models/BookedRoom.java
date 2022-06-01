@@ -131,6 +131,12 @@ public class BookedRoom {
 	public void setBooking(Booking booking) {
 		this.booking = booking;
 	}
+	@Override
+	public String toString() {
+		return "BookedRoom [ID=" + ID + ", arrivalDate=" + arrivalDate + ", departureDate=" + departureDate
+				+ ", numberOfGuest=" + numberOfGuest + ", price=" + price + ", room=" + room + ", booking=" + booking
+				+ "]";
+	}
 
 
 	

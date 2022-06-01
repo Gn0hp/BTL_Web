@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import com.ptit.web.N13.Models.*;
-
+import com.ptit.web.N13.Models.BookedRoom;
 
 @Repository
-public interface RoomRepo extends CrudRepository<Room, Integer> {
-	List<Room> findByType(String type);
+public interface BookedRoomRepo extends CrudRepository<BookedRoom, Integer>{
+	List<BookedRoom> findByRoomID(int id);
 }

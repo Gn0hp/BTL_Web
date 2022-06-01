@@ -30,7 +30,7 @@ public class Booking {
 	private  String note;
 	
 	@ManyToOne
-	@JoinColumn(name = "tblClientId")
+	@JoinColumn(name = "tblClientId", nullable=false)
 	private Client client;
 	public Booking() {}
 	public Booking(int iD, Date bookingDate, String note, Client client) {

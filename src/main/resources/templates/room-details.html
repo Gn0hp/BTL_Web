@@ -13,15 +13,15 @@
     <!--====== HEADER ======-->
     <!--====== OFF CANVAS  ======-->
     <!--====== BREADCRUMB PART START ======-->
-    <section class="breadcrumb-area" style="background-image: url(/img/bg/04.jpg);">
+    <section class="breadcrumb-area" th:style="'background-image: url(' + @{${room.Image}}+');'">
         <div class="container">
             <div class="breadcrumb-text">
                 <span>The ultimate luxury</span>
                 <h2 class="page-title">Room Details</h2>
 
                 <ul class="breadcrumb-nav">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Rooms</li>
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/room/room-grid">Rooms</a></li>
                 </ul>
             </div>
         </div>
@@ -40,7 +40,8 @@
                                 <h2>Luxury Double Bed</h2>
                             </div>
                             <div class="price">
-                                $345<span>/Night</span>
+                            	<span style ="font-size: 32px;" th:text="${room.Price}+'$'"></span>
+                                <span>/Night</span>
                             </div>
                         </div>
                         <div class="thumb">
@@ -115,10 +116,10 @@
                                 <div class="col-lg-6 col-sm-6">
                                     <div class="testimonial-box">
                                         <div class="client-img">
-                                            <img src="/img/testimonial/01.png" alt="images">
+                                            <img src="/img/Nguyen.jpg" alt="images">
                                             <span class="check"><i class="fal fa-check"></i></span>
                                         </div>
-                                        <h3>Rosalina D. William</h3>
+                                        <a href="https://www.facebook.com/profile.php?id=100011291291967"><h3>Mr. Nguyen Luu Trong</h3></a>
                                         <span class="clinet-post">Founder, qux co.</span>
                                         <p>
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -130,10 +131,10 @@
                                 <div class="col-lg-6 col-sm-6">
                                     <div class="testimonial-box">
                                         <div class="client-img">
-                                            <img src="/img/testimonial/02.png" alt="images">
+                                            <img src="/img/tu.jpg" alt="images">
                                             <span class="check"><i class="fal fa-check"></i></span>
                                         </div>
-                                        <h3>Donald H. Hilixer</h3>
+                                        <a href="https://www.facebook.com/profile.php?id=100041569574723"> <h3>Mr. Tu Hoang Cong</h3></a>
                                         <span class="clinet-post">Founder, hilix</span>
                                         <p>
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -223,8 +224,8 @@
                 <!-- form -->
                 <div class="col-lg-4">
                     <div class="room-booking-form">
-                        <h5 class="title">Check Availability</h5>
-                        <form action="#">
+                        <h5 class="title">Book Now</h5>
+                        <form action="/booking/book-room", method="post">
                             <div class="input-group input-group-two left-icon mb-20">
                                 <label for="arrival-date">Check In</label>
                                 <div class="icon"><i class="fal fa-calendar-alt"></i></div>
@@ -236,8 +237,8 @@
                                 <input type="text" placeholder="30-6-2020" name="departure-date" id="departure-date">
                             </div>
                             <div class="input-group input-group-two left-icon mb-20">
-                                <label for="room">Rooms</label>
-                                <select name="room" id="room">
+                                <label for="rooms">Rooms</label>
+                                <select name="rooms" id="rooms">
                                     <option value="1">1 Room</option>
                                     <option value="2" selected>2 Room</option>
                                     <option value="4">4 Room</option>
@@ -246,15 +247,13 @@
                             </div>
                             <div class="input-group input-group-two left-icon mb-20">
                                 <label for="departure-date">Guest</label>
-                                <select name="guest" id="guest">
-                                    <option value="8">8 Guest</option>
-                                    <option value="10" selected>10 Guest</option>
-                                    <option value="12">12 Guest</option>
-                                    <option value="15">15 Guest</option>
-                                </select>
+                                <input type="text" name="guest" id="guest">
+                            </div>
+                            <div class="input-group input-group-two left-icon mb-20">
+                                <input type="hidden" name="roomID" id="guest" th:value="${room.ID}">
                             </div>
                             <div class="input-group">
-                                <button class="main-btn btn-filled">check availability</button>
+                                <button class="main-btn btn-filled">Book Now</button>
                             </div>
                         </form>
                     </div>
