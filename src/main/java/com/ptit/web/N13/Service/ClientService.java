@@ -17,6 +17,6 @@ public interface ClientService {
 	
 	void deleteClient(int id);
 	
-    boolean clientCheckin(Client client);
+    boolean clientCheckin(String userName, String password );
     
 }

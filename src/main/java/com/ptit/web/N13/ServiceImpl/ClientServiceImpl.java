@@ -41,14 +41,13 @@ public class ClientServiceImpl implements ClientService{
 	}
 
 	@Override
-	public boolean clientCheckin(Client user) {
+	public boolean clientCheckin(String userName , String password) {
 		// TODO Auto-generated method stub
 		List<Client> clientList = (List<Client>) ClientRepo.findAll();
 		for(Client a: clientList) {
-			if(a.getEmail().equals(user.getEmail()) && a.getPassword().equals(user.getPassword())) return true;
+			if(a.getName().equals(userName) && a.getPassword().equals(password)) return true;
 		}
 	  return false;
 	}
-	
 
 }
