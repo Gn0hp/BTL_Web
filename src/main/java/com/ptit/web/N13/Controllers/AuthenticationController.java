@@ -28,18 +28,21 @@ public class AuthenticationController {
 		return "login";
 	}
 	@PostMapping("/checkLogin")
-	public String checkLogin(ModelMap model ,
+	public ModelAndView checkLogin(
 			@RequestParam("username")String username,
 			@RequestParam("password")String password,
 			HttpSession session) {
+		ModelAndView model = new ModelAndView("index");
 		if(clientService.clientCheckin(username, password)){
-			session.setAttribute("USERNAME", username);
-			return "index";
+			session.setAttribute("USERNAME", username); 
+			model.addObject("isLogin", true);
+			model.addObject("USERNAME", session.getAttribute("USERNAME"));
+			return model;
 		}
-		else {
-			model.addAttribute("ERROR","Thong tin dang nhap sai hoac tai khoan khong ton tai");
-		}
-		return "login";
+		model = new ModelAndView("login");
+		model.addObject("ERROR","Thong tin dang nhap sai hoac tai khoan khong ton tai");
+		model.addObject("isLogin", false);
+		return model;
 		
 	}
 	@GetMapping("/signup")
@@ -64,7 +67,7 @@ public class AuthenticationController {
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("USERNAME");
-		return "redirect:/login";
+		return "index";
 	}
 	
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ptit.web.N13.Models.BookedRoom;
 import com.ptit.web.N13.Models.Room;
 import com.ptit.web.N13.Service.BookedRoomService;
 import com.ptit.web.N13.Service.RoomService;
@@ -77,7 +78,12 @@ public class BookingController {
 	}
 	
 	@PostMapping("/confirm")
-	public ModelAndView confirm(@RequestParam String id) {
+	public ModelAndView confirm(@RequestParam("roomID") String id, @RequestParam("roomName") String roomName, @RequestParam("roomType") String roomType,
+			@RequestParam("arrivalDate") String arrivalDate, @RequestParam("departure-date") String departureDate,
+			@RequestParam("rooms")String rooms, @RequestParam("guests") String guests
+				
+			) {
+		BookedRoom bookedRoom = new BookedRoom();
 		ModelAndView mav = new ModelAndView("booking");
 		return mav;
 		

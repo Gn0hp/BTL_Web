@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    th:fragment="main-fragment (title, mainContent)">
+    th:fragment="main-fragment (title, mainContent, loginContent)">
 
 <head>
 	<!--====== Required meta tags ======-->
@@ -112,15 +112,7 @@
 								<h5 class="title">info@webmail.com</h5>
 							</a>
 						</div>
-						<div class ="item">
-							<span > 
-								<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
-								href="/authentication/login/" 
-								style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
-								Login</a>
-							</span>
-							
-						</div>
+						<div th:insert="${loginContent} ?: ~{}"></div>
 					</div>
 				</div>
 
