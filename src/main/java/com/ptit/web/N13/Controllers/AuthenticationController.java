@@ -50,18 +50,27 @@ public class AuthenticationController {
 		return "signup";
 	}
 	@PostMapping("/signup")
-	public String signupClient(HttpSession session ,ModelMap model,
-			@RequestParam("yourname")String yourname,
-			@RequestParam("username")String username,
-			@RequestParam("password")String password) {
-		int role = 1;
-		if(clientService.clientCheckin(username, password)) {
-			model.addAttribute("ERROR", "Ten dang nhap da ton tai");
-			return "signup";
-		}else {
-			session.setAttribute("USERNAME", username);
-			clientService.saveClient(new Client(yourname,username,password));
-			return "index";
+	public ModelAndView signupClient(HttpSession session ,
+			@RequestParam("name")String name,
+			@RequestParam("email")String email,
+			@RequestParam("phone")String phone,
+			@RequestParam("password")String password,
+			@RequestParam("confirmpass")String confirmpass) {
+		ModelAndView model = new ModelAndView("signup");
+		if(clientService.clientCheckin(name, password)) {
+			model.addObject("ERROR", "Ten dang nhap da ton tai");
+			return model;
+		}
+		else if(!password.equals(confirmpass)){
+			model.addObject("ERROR","sai password");
+			return model;
+		}
+			else {
+			model = new ModelAndView("login");
+			session.setAttribute("USERNAME", name);
+			clientService.saveClient(new Client(name,email,phone,password));
+			model.addObject("Notification","Dang ki thanh cong. Vui long dang nhap lai.");
+			return model;
 		}
 	}
 	@GetMapping("/logout")

@@ -53,10 +53,11 @@ public class Client {
 		this.email = email;
 		this.password = password;
 	}
-	public Client(String yourName, String email, String password) {
+	public Client(String yourName, String email,String phone, String password) {
 		super();
 		this.name = yourName;
 		this.email = email;
+		this.phoneNumber = phone;
 		this.password = password;
 	}
 	public int getID() {
