@@ -42,6 +42,23 @@
                     </div>
                 </div>
             </form>
+            <div>
+                Bill detail
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>PaymentDate</th>
+                        <th>Amount</th>
+                        <th>PaymentType</th>
+                    </tr>
+                    <tr th:each="bill : ${bills}">
+                        <td th:utext="${bill.ID}">ID</td>
+                        <td th:utext="${bill.paymentDate}">PaymentDate</td>
+                        <td th:utext="${bill.amount}">Amount</td>
+                        <td th:utext="${bill.paymentType}">PaymentType</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </body>
