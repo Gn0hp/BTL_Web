@@ -23,24 +23,24 @@ public class BookedRoom {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
 	
-	@Column(name="ArrivalDate")
+	@Column(name="ArrivalDate", columnDefinition="default null")
 	private Date arrivalDate;
 	
-	@Column(name="DepartureDate")
+	@Column(name="DepartureDate", columnDefinition="default null")
 	private Date departureDate;
 	
-	@Column(name="NumberOfGuest")
+	@Column(name="NumberOfGuest", columnDefinition="default null")
 	private int numberOfGuest;
 	
-	@Column(name="Price")
+	@Column(name="Price", columnDefinition="default null")
 	private float  price;
 	
 	@ManyToOne
-	@JoinColumn(name = "tblRoomId")
+	@JoinColumn(name = "tblRoomId", columnDefinition="default null")
 	private Room room;
 	
 	@ManyToOne
-	@JoinColumn(name = "tblBookingId")
+	@JoinColumn(name = "tblBookingId",columnDefinition="default null")
 	private Booking booking;
 	
 	
@@ -76,10 +76,11 @@ public class BookedRoom {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-	public BookedRoom(Date arrivalDate, Date departureDate, int price, Room room, Booking booking) {
+	public BookedRoom(Date arrivalDate, Date departureDate,int numberOfGuest, int price, Room room, Booking booking) {
 		super();
 		this.arrivalDate = arrivalDate;
 		this.departureDate = departureDate;
+		this.numberOfGuest = numberOfGuest;
 		this.price = price;
 		this.room = room;
 		this.booking = booking;
@@ -130,6 +131,12 @@ public class BookedRoom {
 
 	public void setBooking(Booking booking) {
 		this.booking = booking;
+	}
+	@Override
+	public String toString() {
+		return "BookedRoom [ID=" + ID + ", arrivalDate=" + arrivalDate + ", departureDate=" + departureDate
+				+ ", numberOfGuest=" + numberOfGuest + ", price=" + price + ", room=" + room + ", booking=" + booking
+				+ "]";
 	}
 
 

@@ -3,11 +3,27 @@
       th:replace="~{layouts/layout :: main-fragment(  
                                                 ~{::title},
                                                 ~{:: #main-content},  
+                                                ~{:: #login-content}
                                                )}">
 <head>
     <!--====== Title ======-->
     <title>Hotel Miranda Room Details </title>
 <body>
+    <div class ="item" id="login-content">
+		<span th:unless="${isLogin}"> 
+			<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="/authentication/login/" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Login</a>
+		</span>
+		<span th:if="${isLogin}"> 
+			
+			<a class="main-btn btn-filled wow fadeInUp"  data-wow-delay=".7s" id="logout-user"
+				href="/authentication/logout/" 
+				style="visibility: visible; margin-top:4px; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Logout</a>
+		</span>
+	</div>
 	<div id="main-content">
     <!--====== PRELOader ======-->
     <!--====== HEADER ======-->
@@ -36,8 +52,8 @@
                     <div class="deatils-box">
                         <div class="title-wrap">
                             <div class="title">
-                                <div class="room-cat">double bed</div>
-                                <h2>Luxury Double Bed</h2>
+                                <div class="room-cat" th:text="${room.Type}">double bed</div>
+                                <h2 th:text="${room.Name}">Luxury Double Bed</h2>
                             </div>
                             <div class="price">
                             	<span style ="font-size: 32px;" th:text="${room.Price}+'$'"></span>
@@ -46,7 +62,7 @@
                         </div>
                         <div class="thumb">
                           <div class="room-details-slider">
-                            <img src="/img/room/details.jpg" alt="images">
+                            <img th:src="@{${room.Image}}" alt="images">
                             <img src="/img/room/details-2.jpg" alt="images">
                             <img src="/img/room/details-3.jpg" alt="images">
                             <img src="/img/room/details-4.jpg" alt="images">

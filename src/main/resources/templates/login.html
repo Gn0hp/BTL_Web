@@ -32,7 +32,7 @@
               <h3>Login to <strong>Hotel Miranda</strong></h3>
               <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
               </div>
-              <form action="/authentication/login/" method="post">
+              <form action="/authentication/checkLogin/" method="post">
                 <div class="form-group first">
                   <label for="username">Username: </label>
                   <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name= "username">
@@ -41,7 +41,7 @@
                   <label for="password">Password: </label>
                   <input type="password" class="form-control" placeholder="Your Password" id="password" name = "password">
                 </div>
-                
+                <p style="color:red;" th:text="${ERROR}"></p>
                 <div class="d-sm-flex mb-5 align-items-center">
                   <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
                     <input type="checkbox" />
