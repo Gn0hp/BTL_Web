@@ -1,12 +1,17 @@
 package com.ptit.web.N13.Controllers;
 
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.ptit.web.N13.Service.*;
 import com.ptit.web.N13.Models.*;
 
@@ -22,9 +27,14 @@ public class BillController {
     private ClientService clientService;
 
     @GetMapping()
-	public String bill() {
-		return "statistic";
-	}	
+    public ModelAndView bill(HttpSession session) {
+		ModelAndView model = new ModelAndView("statistic");
+		if(session.getAttribute("USERNAME")!=null) {
+			model.addObject("isLogin", true);
+			model.addObject("USERNAME", session.getAttribute("USERNAME"));
+		}
+		return model;
+	}
 
 	@PostMapping("/")
 	public String clientBill(@RequestParam("payment-date") String paymentDate) {

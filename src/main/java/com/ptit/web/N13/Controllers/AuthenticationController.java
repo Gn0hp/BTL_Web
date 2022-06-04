@@ -67,7 +67,6 @@ public class AuthenticationController {
 		}
 			else {
 			model = new ModelAndView("login");
-			session.setAttribute("USERNAME", name);
 			clientService.saveClient(new Client(name,email,phone,password));
 			model.addObject("Notification","Dang ki thanh cong. Vui long dang nhap lai.");
 			return model;
