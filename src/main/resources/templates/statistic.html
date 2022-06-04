@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/layout :: main-fragment(  
                                                 ~{::title},
                                                 ~{:: #main-content},  
+                                                ~{:: #login-content}
                                                )}">
 
 <head>
@@ -11,6 +12,22 @@
 </head>
 
 <body>
+    <div class ="item" id="login-content">
+		<span th:unless="${isLogin}"> 
+			<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="/authentication/login/" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Login</a>
+		</span>
+		<span th:if="${isLogin}"> 
+			
+			<a class="main-btn btn-filled wow fadeInUp"  data-wow-delay=".7s" id="logout-user"
+				href="/authentication/logout/" 
+				style="visibility: visible; margin-top:4px; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Logout</a>
+		</span>
+	</div>
+	
     <div class="container" id="main-content">
         <section class="breadcrumb-area" style="background-image: url(/img/bg/04.jpg);">
             <div class="container">
@@ -44,29 +61,20 @@
             </form>
             <div>
             Bill Detail 
-            	 <table>
-        <tr>
-       		<th>ID</th>
-            <th>Payment Date</tth>
-            <th>Amount</th>
-            <th>Payment Type</th>
-            <th>Amount</th>
-        </tr>
-        	<td>1 </td>
-        	<td> 2</td>
-        	<td> 3</td>
-        	<td> 4</td>
-        	<td> 5</td>
-        <tr>
-        </tr>
-			<td>1 </td>
-        	<td> 2</td>
-        	<td> 3</td>
-        	<td> 4</td>
-        	<td> 5</td>
-        <tr>
-        </tr>
-    </table>
+                <table class ="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>PaymentDate</th>
+                        <th>Amount</th>
+                        <th>PaymentType</th>
+                    </tr>
+                    <tr th:each="bill : ${bills}">
+                        <td th:utext="${bill.ID}">ID</td>
+                        <td th:utext="${bill.paymentDate}">PaymentDate</td>
+                        <td th:utext="${bill.amount}">Amount</td>
+                        <td th:utext="${bill.paymentType}">PaymentType</td>
+                    </tr>
+                </table>
              </div>
         </div>
     </div>

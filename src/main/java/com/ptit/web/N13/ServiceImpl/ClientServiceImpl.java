@@ -50,4 +50,10 @@ public class ClientServiceImpl implements ClientService{
 	  return false;
 	}
 
+	@Override
+	public Client findByName(String username) {
+		// TODO Auto-generated method stub
+		return ClientRepo.findByName(username);
+	}
+
 }

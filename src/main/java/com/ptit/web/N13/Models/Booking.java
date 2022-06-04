@@ -23,14 +23,14 @@ public class Booking {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
 	
-	@Column(name="BookingDate" )
+	@Column(name="BookingDate", columnDefinition="date default null")
 	private Date bookingDate;
 	
 	@Column(name="Note")
 	private  String note;
 	
 	@ManyToOne
-	@JoinColumn(name = "tblClientId", nullable=false)
+	@JoinColumn(name = "tblClientId", nullable=false ,columnDefinition="default null")
 	private Client client;
 	public Booking() {}
 	public Booking(int iD, Date bookingDate, String note, Client client) {
