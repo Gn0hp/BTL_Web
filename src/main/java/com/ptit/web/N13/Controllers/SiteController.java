@@ -26,15 +26,30 @@ public class SiteController {
 		return model;
 	}
 	@GetMapping("/news")
-	public String news() {
-		return "news";
+	public ModelAndView news(HttpSession session) {
+		ModelAndView model = new ModelAndView("news");
+		if(session.getAttribute("USERNAME")!=null) {
+			model.addObject("isLogin", true);
+			model.addObject("USERNAME", session.getAttribute("USERNAME"));
+		}
+		return model;
 	}
 	@GetMapping("/news-details")
-	public String newsDetails() {
-		return "news-details";
+	public ModelAndView newsDetails(HttpSession session) {
+		ModelAndView model = new ModelAndView("news-details");
+		if(session.getAttribute("USERNAME")!=null) {
+			model.addObject("isLogin", true);
+			model.addObject("USERNAME", session.getAttribute("USERNAME"));
+		}
+		return model;
 	}
 	@GetMapping("/contact")
-	public String contact() {
-		return "news";
+	public ModelAndView contact(HttpSession session) {
+		ModelAndView model = new ModelAndView("news");
+		if(session.getAttribute("USERNAME")!=null) {
+			model.addObject("isLogin", true);
+			model.addObject("USERNAME", session.getAttribute("USERNAME"));
+		}
+		return model;
 	}
 }

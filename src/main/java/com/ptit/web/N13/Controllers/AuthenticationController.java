@@ -35,8 +35,6 @@ public class AuthenticationController {
 		ModelAndView model = new ModelAndView("index");
 		if(clientService.clientCheckin(username, password)){
 			session.setAttribute("USERNAME", username); 
-			
-			
 			model.addObject("isLogin", true);
 			model.addObject("USERNAME", session.getAttribute("USERNAME"));
 			return model;

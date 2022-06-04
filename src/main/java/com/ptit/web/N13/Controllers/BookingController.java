@@ -41,7 +41,7 @@ public class BookingController {
 	
 	@PostMapping("/check-availability")
 	public ModelAndView checkAvailability(@RequestParam("arrival-date") String arrivalDate, @RequestParam("departure-date") String departureDate,
-			@RequestParam("guests") String guests) throws ParseException {
+			@RequestParam("guests") String guests, HttpSession session) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
 		ModelAndView mav;
 		System.out.printf("%d %s %s", (sdf.parse(arrivalDate).getTime()), departureDate, guests);
@@ -50,6 +50,10 @@ public class BookingController {
 		if(arrivalTime > departureTime) {
 			//handle Error (report message )
 			mav = new ModelAndView("index");
+			if(session.getAttribute("USERNAME")!=null) {
+				mav.addObject("isLogin", true);
+				mav.addObject("USERNAME", session.getAttribute("USERNAME"));
+			}
 			return mav;
 		}
 		ArrayList<Room> availableRoom = new ArrayList<>();
@@ -62,6 +66,10 @@ public class BookingController {
 		
 		if(availableRoom.size()==0) {
 			mav = new ModelAndView("index");
+			if(session.getAttribute("USERNAME")!=null) {
+				mav.addObject("isLogin", true);
+				mav.addObject("USERNAME", session.getAttribute("USERNAME"));
+			}
 			return mav;
 		}
 		for(int i = 0; i<availableRoom.size(); ++i) {
@@ -70,6 +78,10 @@ public class BookingController {
 			}
 		}
 		mav = new ModelAndView("room-list");
+		if(session.getAttribute("USERNAME")!=null) {
+			mav.addObject("isLogin", true);
+			mav.addObject("USERNAME", session.getAttribute("USERNAME"));
+		}
 		mav.addObject("rooms", availableRoom);
 		mav.addObject("roomType", "Available");
 		return mav;
@@ -112,6 +124,10 @@ public class BookingController {
 		BookedRoom bookedRoom = new BookedRoom(arrivaldate,departuredate , Integer.parseInt(guests), price,room, booking);
 		bookedRoomService.save(bookedRoom);
 		ModelAndView mav = new ModelAndView("index");
+		if(session.getAttribute("USERNAME")!=null) {
+			mav.addObject("isLogin", true);
+			mav.addObject("USERNAME", session.getAttribute("USERNAME"));
+		}
 		return mav;
 		
 	}
