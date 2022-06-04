@@ -14,12 +14,18 @@ import com.ptit.web.N13.Service.BookedRoomService;
 @Service
 public class BookedRoomServiceImpl implements BookedRoomService{
     @Autowired
-	private BookedRoomRepo bookedRoom;
+	private BookedRoomRepo bookedRoomRepo;
 
 	@Override
 	public List<BookedRoom> findByRoomID(int id) {
 		// TODO Auto-generated method stub
-		return bookedRoom.findByRoomID(id);
+		return bookedRoomRepo.findByRoomID(id);
+	}
+
+	@Override
+	public BookedRoom save(BookedRoom bookedRoom) {
+		// TODO Auto-generated method stub
+		return bookedRoomRepo.save(bookedRoom);
 	}
 
 

@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{layouts/layout :: main-fragment(  
-                                                ~{::title},
-                                                ~{:: #main-content},
-                                                ~{:: #login-content}  
-                                               )}">
+<html lang="en">
   <head>
-    <!-- Required meta tags -->
+       <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="Sign Up" href="/login_css/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/login_css/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/login_css/css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="/login_css/css/style.css">
     <title>Room Booking</title>
   </head>
   <body>
@@ -38,7 +46,7 @@
           <div class="col-md-6">
             <div class="form-block">
               <div class="text-center mb-5">
-              <h3>Booking to <strong th:text="${room.Name}"></strong></h3>
+              <h3>Booking to <strong th:text="${roomName}"></strong></h3>
               <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
               </div>
               <form action="/booking/confirm" method="post">
@@ -67,12 +75,7 @@
                   <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" th:value="${rooms}" name="rooms">
                 </div>
                 
-                <div class="d-sm-flex mb-5 align-items-center">
-                  <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Accept terms and conditions</span>
-                    <input type="checkbox"/>
-                    <div class="control__indicator"></div>
-                </div>
-                <input type="hidden" id="roomID" th:value="${rooms.ID}" name="roomID">
+                <input type="hidden" id="roomID" th:value="${room.ID}" name="roomID">
                 <input type="submit" value="Confirm" class="btn btn-block btn-primary">
                 
               </form>

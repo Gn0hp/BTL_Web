@@ -7,5 +7,5 @@ import com.ptit.web.N13.Models.Client;
 
 @Repository
 public interface ClientRepo extends CrudRepository <Client,Integer> {
- 
+	Client findByName(String username);
 }

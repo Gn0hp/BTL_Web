@@ -64,29 +64,20 @@
             </form>
             <div>
             Bill Detail 
-            	 <table>
-        <tr>
-       		<th>ID</th>
-            <th>Payment Date</tth>
-            <th>Amount</th>
-            <th>Payment Type</th>
-            <th>Amount</th>
-        </tr>
-        	<td>1 </td>
-        	<td> 2</td>
-        	<td> 3</td>
-        	<td> 4</td>
-        	<td> 5</td>
-        <tr>
-        </tr>
-			<td>1 </td>
-        	<td> 2</td>
-        	<td> 3</td>
-        	<td> 4</td>
-        	<td> 5</td>
-        <tr>
-        </tr>
-    </table>
+                <table class ="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>PaymentDate</th>
+                        <th>Amount</th>
+                        <th>PaymentType</th>
+                    </tr>
+                    <tr th:each="bill : ${bills}">
+                        <td th:utext="${bill.ID}">ID</td>
+                        <td th:utext="${bill.paymentDate}">PaymentDate</td>
+                        <td th:utext="${bill.amount}">Amount</td>
+                        <td th:utext="${bill.paymentType}">PaymentType</td>
+                    </tr>
+                </table>
              </div>
         </div>
     </div>

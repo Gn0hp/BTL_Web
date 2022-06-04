@@ -9,4 +9,5 @@ import com.ptit.web.N13.Models.*;
 @Service
 public interface BookedRoomService {
 	List<BookedRoom> findByRoomID(int id);
+	BookedRoom save(BookedRoom bookedRoom);
 }

@@ -9,19 +9,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ptit.web.N13.Models.Room;
 import com.ptit.web.N13.Service.RoomService;
 
 @Controller
 public class SiteController {
-
 	@GetMapping("/")
-	public String home(HttpSession session, Model model) {
-		if(session.getAttribute("USERNAME")==null) {
-			model.addAttribute("USERNAME", session.getAttribute("USERNAME"));
+	public ModelAndView home(HttpSession session) {
+		ModelAndView model = new ModelAndView("index");
+		if(session.getAttribute("USERNAME")!=null) {
+			model.addObject("isLogin", true);
+			model.addObject("USERNAME", session.getAttribute("USERNAME"));
 		}
-		return "index";
+		return model;
 	}
 	@GetMapping("/news")
 	public String news() {

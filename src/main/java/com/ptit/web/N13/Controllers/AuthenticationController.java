@@ -35,6 +35,8 @@ public class AuthenticationController {
 		ModelAndView model = new ModelAndView("index");
 		if(clientService.clientCheckin(username, password)){
 			session.setAttribute("USERNAME", username); 
+			
+			
 			model.addObject("isLogin", true);
 			model.addObject("USERNAME", session.getAttribute("USERNAME"));
 			return model;
@@ -68,7 +70,7 @@ public class AuthenticationController {
 			else {
 			model = new ModelAndView("login");
 			session.setAttribute("USERNAME", name);
-			clientService.saveClient(new Client(name,email,phone,password));
+			clientService.saveClient(new Client(name,email,phone,name,password,1));
 			model.addObject("Notification","Dang ki thanh cong. Vui long dang nhap lai.");
 			return model;
 		}

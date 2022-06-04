@@ -18,26 +18,25 @@ public class Client {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
 	
-	@Column(name="Name")
+	@Column(name="Name", columnDefinition="date default null")
 	private String name;
 	
-	@Column(name="Email")
+	@Column(name="Email",columnDefinition="date default null")
 	private String email;
 	
-	@Column(name="PhoneNumber")
+	@Column(name="PhoneNumber",columnDefinition="date default null")
 	private String phoneNumber;
 	
-	@Column(name="Username")
+	@Column(name="Username",columnDefinition="date default null")
 	private String username;
 	
-	@Column(name="Password")
+	@Column(name="Password",columnDefinition="date default null")
 	private String password;
 	
-	@Column(name="Role")
+	@Column(name="Role",columnDefinition="date default null")
 	private int role;
-	public Client(int iD, String name, String email, String phoneNumber, String username, String password, int role) {
+	public Client( String name, String email, String phoneNumber, String username, String password, int role) {
 		super();
-		ID = iD;
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
@@ -53,11 +52,12 @@ public class Client {
 		this.email = email;
 		this.password = password;
 	}
-	public Client(String yourName, String email,String phone, String password) {
+	public Client(String yourName, String email,String phone,String username, String password) {
 		super();
 		this.name = yourName;
 		this.email = email;
 		this.phoneNumber = phone;
+		this.username=username;
 		this.password = password;
 	}
 	public int getID() {

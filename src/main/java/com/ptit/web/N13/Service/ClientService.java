@@ -15,6 +15,8 @@ public interface ClientService {
 	
 	Client findById(int id);
 	
+	Client findByName(String username);
+	
 	void deleteClient(int id);
 	
     boolean clientCheckin(String userName, String password );
