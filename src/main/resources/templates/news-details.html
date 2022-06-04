@@ -3,6 +3,7 @@
       th:replace="~{layouts/layout :: main-fragment(  
                                                 ~{::title},
                                                 ~{:: #main-content},  
+                                                ~{:: #login-content}
                                                )}">
 <head>
 
@@ -11,6 +12,24 @@
 </head>
 
 <body>
+  <div class ="item" id="login-content">
+		<span th:unless="${isLogin}"> 
+			<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="/authentication/login/" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Login</a>
+		</span>
+		<span th:if="${isLogin}"> 
+			<h4 class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;" th:text="'Hello '+${USERNAME}">
+				</h4>
+			<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="/authentication/logout/" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Logout</a>
+		</span>
+	</div>
   <!--====== PRELOader ======-->
   <!--====== HEADER ======-->
   <!--====== OFF CANVAS  ======-->

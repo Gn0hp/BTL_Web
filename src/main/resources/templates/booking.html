@@ -2,13 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layouts/layout :: main-fragment(  
                                                 ~{::title},
-                                                ~{:: #main-content},  
+                                                ~{:: #main-content},
+                                                ~{:: #login-content}  
                                                )}">
   <head>
     <!-- Required meta tags -->
     <title>Room Booking</title>
   </head>
   <body>
+  <div class ="item" id="login-content">
+		<span th:unless="${isLogin}"> 
+			<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="/authentication/login/" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Login</a>
+		</span>
+		<span th:if="${isLogin}"> 
+			<h4 class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;" th:text="'Hello '+${USERNAME}">
+				</h4>
+			<a class="main-btn btn-filled wow fadeInUp" data-wow-delay=".7s" 
+				href="/authentication/logout/" 
+				style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+				Logout</a>
+		</span>
+	</div>
 	<div id="main-content">
   <div class="half">
     <a href="/"><div class="bg order-1 order-md-2" style="background-image: url('/img/bg/02.jpg');"></div></a>

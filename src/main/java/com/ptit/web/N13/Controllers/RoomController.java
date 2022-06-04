@@ -2,6 +2,8 @@ package com.ptit.web.N13.Controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,25 +25,38 @@ public class RoomController {
 	private RoomService roomService;
 	
 	@GetMapping("/room-grid")
-	public String roomGrid(Model model) {	
+	public ModelAndView roomGrid(HttpSession session ) {	
+		ModelAndView model = new ModelAndView("room-grid");
 		List<Room> rooms = roomService.viewRoom();
-		model.addAttribute("rooms", rooms);
+		model.addObject("rooms", rooms);
+		if(session.getAttribute("USERNAME")!=null) {
+			model.addObject("isLogin", true);
+			model.addObject("USERNAME", session.getAttribute("USERNAME"));
+		}
 		System.out.println("length of room: "+ rooms.size());
-		return "room-grid";
+		return model;
 	}
 	@GetMapping("/room-list")
-	public ModelAndView roomList() {
+	public ModelAndView roomList(HttpSession session) {
 		List<Room> rooms = roomService.viewRoom();
 		System.out.println("length of room: "+ rooms.size());
 		ModelAndView mav = new ModelAndView("room-list");
 		mav.addObject("rooms", rooms);
+		if(session.getAttribute("USERNAME")!=null) {
+			mav.addObject("isLogin", true);
+			mav.addObject("USERNAME", session.getAttribute("USERNAME"));
+		}
 		return mav;
 	}
 	@GetMapping("/room-detail/{id}")
-	public ModelAndView roomDetails(@PathVariable int id) {
+	public ModelAndView roomDetails(@PathVariable int id,HttpSession session) {
 		ModelAndView mav = new ModelAndView("room-details");
 		Room room = roomService.findById(id);
 		mav.addObject("room", room);
+		if(session.getAttribute("USERNAME")!=null) {
+			mav.addObject("isLogin", true);
+			mav.addObject("USERNAME", session.getAttribute("USERNAME"));
+		}
 		System.out.print(room.getName());
 		return mav;
 	}
